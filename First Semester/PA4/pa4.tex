@@ -159,7 +159,15 @@ Geo-fencing is a feature the team agreed was useful for reducing the required us
 Adding gesture based input functionality to application was developed as a stepping stone for future functionalities such as the user declaring custom landmarks. The team agreed its implementation was executed very well as its modular design allows for using the feature anywhere in the application. After experimenting with the various gestures, the team confirmed a long press action on the navigation screen would be ideal for the user indicating they want to add a custom landmark. Other gestures prompted ideas for new features such as swiping back on the navigation screen to trigger repeating the current navigation direction, however, the team also discussed investigating if this is already a functionality offered by stock accessibility programs on Android. The team was very happy with the implementation of gestures and is excited to improve the user experience with their use.
 
 \chapter{Future Design Changes}
-TODO: This section
+
+It became evident after designing and prototyping desired features that some ideas are better in theory than in implementation. One such example was the gesture-detection as a form of interaction with the application. Gestures that are context-aware lead to the same application interactions eliciting separate and highly distinct behaviors that may lead to unexpected results for the user. The context of the application may be difficult to discern for a blind user. In this sense, gesture-detection should be superseded and brought to obsolescence by voice commands. We plan to use Google voice to implement the actual voice recognition and voice commands. Simply speaking to the application through a microphone on a headset or set of earbuds will allow for much more fine-grained control and potentially limitless interactions with the app that gestures simply would not allow for. There are only a limited number of gestures, and the overlap would make the usability very poor. Voice commands are the chosen options here.
+
+After designing, prototyping, and testing the GPS features we found out that reliably detecting a user's location indoors was a bit difficult. If this feature is still necessary in future versions, wifi will be used to pinpoint a location. In reality, it was determined that the only real use-case for auto-location would be detecting when a user enters a building. This is done using Geo-Fencing currently, and can be improved by using more sources to pinpoint location as stated above.
+
+As for navigation history, it is a nearly complete and functional feature. The only change necessary for this feature is that the users will need to be able to navigate the selections with easily spoken identifiers using voice commands. As stated in the first paragraph, this is a desired future change that will be developed sometime in the foreseeable future.
+
+Overall there is much to work on and many features to develop, and it is also a high-priority to refactor the codebase and generally improve the quality of the source code.
+
 \chapter{Team Contributions}
 	\section{Matthew Berger}
 		\begin{itemize}
