@@ -82,10 +82,40 @@ This component is responsible for logging and storing a user’s previously take
 \subsection{User Stories}
 \begin{enumerate}
 	\item As a user, after opening Navatar, I should be given an option that takes me to the route history page so I can view my route history.
+	
+		\begin{itemize}
+			\item Create a button on homescreen of application that takes user to route history page. Only display button if there is route history to display.
+			\item Create route history page that pulls history from the route history json file.
+		\end{itemize}
+	
 	\item As a user, on the route history page, I should be able to select a route from my history so I can repeat that navigation.
+	
+		\begin{itemize}
+			\item Store route history to json file in local application storage upon completing a given route successfully.
+			\item Create a new activity responsible for starting navigation from a previously taken route.
+		\end{itemize}
+	
 	\item As a user, after successfully completing a navigation, I should be prompted if I would like to reverse that route so I can navigate back to my origin.
+	
+		\begin{itemize}
+			\item Create prompt / button that is displayed on successfully completing a route asking if user would like to reverse.
+			\item Create a new activity responsible for starting route reversal navigations.
+			\item Prompt / button should trigger the route reversal activity.
+		\end{itemize}
+\pagebreak
 	\item As a user, on the route history page, I would like to avoid having failed or incomplete navigations saved to my history so I can avoid repeating them.
+	
+		\begin{itemize}
+			\item Ensure route history is not saved to failed to incomplete navigations in NavigationActivity.java
+		\end{itemize}
+	
 	\item As a researcher, I should have access to the route history logs in a parsable format for analytical purposes.
+	
+		\begin{itemize}
+			\item Investigate the feasibility of pushing route history logs to a cloud based storage solution.
+			\item Ensure route history logs are stored in an easily locatable directory of the local device storage.
+		\end{itemize}
+	
 \end{enumerate}
 
 \pagebreak
