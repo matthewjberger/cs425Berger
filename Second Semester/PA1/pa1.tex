@@ -72,7 +72,7 @@ Navatar is an indoor navigation system for visually impaired students. Unlike ex
 \chapter{Project Updates and Changes}
 Team 6 has been working on cleaning up the existing code base to better facilitate the implementation of the planned features while also debugging issues encountered with the existing code. The team has recently added additional priority to fixing bugs with the existing maps and map creation functionality as their advisor, Eelke Folmer, informed them a university has expressed interest in the development of Navatar. Efforts are also being made to automate setup of the development environment to allow other open source contributors to easily assist with improving Navatar.\\
 
-It became evident after the design and prototype stage that some of the team's ideas were better in theory than in implementation. One such example was using certain gestures as a form of interaction with the application. Gestures that are context-aware lead to the same application interactions eliciting separate and highly distinct behaviors that may lead to unexpected results for the user. The context of the application may be difficult to discern for a blind user. In this sense, gesture-detection functionality must be done carefully to ensure there are not conflicts between Navatar gestures and external accessibility gestures. Voice commands can also be used where gestures are found to not be feasible. We changed our design to also include the use of Google voice speech recognition as an input source should we deem it necessary. Simply speaking to the application through a microphone on a headset or set of ear-buds will allow for accurate control and potentially limitless interactions with the app which solves the issues associated with only using gestures.\\
+It became evident after the design and prototype stage that some of the team\textsc{\char13}s ideas were better in theory than in implementation. One such example was using certain gestures as a form of interaction with the application. Gestures that are context-aware lead to the same application interactions eliciting separate and highly distinct behaviors that may lead to unexpected results for the user. The context of the application may be difficult to discern for a blind user. In this sense, gesture-detection functionality must be done carefully to ensure there are not conflicts between Navatar gestures and external accessibility gestures. Voice commands can also be used where gestures are found to not be feasible. We changed our design to also include the use of Google voice speech recognition as an input source should we deem it necessary. Simply speaking to the application through a microphone on a headset or set of ear-buds will allow for accurate control and potentially limitless interactions with the app which solves the issues associated with only using gestures.\\
 
 After designing, prototyping, and testing the GPS features we found that reliably detecting a user’s location indoors was difficult. It was determined that the real use-case for autolocation would be when a user enters a building, which allows for the best location accuracy using GPS. The subsequent use cases including the user leaving the building or navigating between rooms inside the building are made possible using an Android feature that allows for getting the last known location of the smartphone.The autolocation functionality is done using Geo-Fencing currently, and can be improved by using additional location data sources such as WiFi or cellular towers. As for navigation history, it is a nearly complete and functional feature barring the additional planned functionalities of allowing users to reverse the previously navigated route and collecting data on which routes are completable. Additional focus for improving the feature is allowing users to navigate the selections with easily spoken voice commands. Overall there is much to work on and many features to develop with the overarching task of refactoring the codebase to improve the quality of the existing code.
 
@@ -129,7 +129,7 @@ This component is responsible for the automatic selection of the campus and buil
 
 \subsection{User Stories and Required Tasks}
 \begin{enumerate}
-	\item As a user, I want Geofencing so that I don't have to select the campus I am on.
+	\item As a user, I want Geofencing so that I don\textsc{\char13}t have to select the campus I am on.
 	
 		\begin{itemize}
 			\item Investigate method for generating and storing campus boundaries that is accurate and easy for other open source contributors and map creators.
@@ -151,7 +151,7 @@ This component is responsible for the automatic selection of the campus and buil
 			\item When Geofencing attempts fail (did not get accurate enough location before timeout) inform the user via voice or other method so they know to use existing campus and building selection functionality.
 		\end{itemize}
 		
-	\item As a user, I want Geofencing so that I don't have to select the building I want to navigate within.
+	\item As a user, I want Geofencing so that I don\textsc{\char13}t have to select the building I want to navigate within.
 		\begin{itemize}
 		
 			\item Investigate method for generating and storing building boundaries that is accurate and easy for other open source contributors and map creators.
@@ -212,7 +212,7 @@ This component is responsible for providing an additional input method to the us
 \end{enumerate}
 
 \chapter{Project Assignments and Schedule}
-Our group is using the ZenHub chrome extension in combination with Github's issue tracker for project management. Using this tool, it has been very easy to assign work items to the members of group as well as manage collections of similar features and categorize desired and existing features. As of now, all of the major work items listed under the 'Spring 2017 Desired Features' epic on the Github repository's issue tracker can be feasibly achieved by the end of the semester on May 5th. All other features listed on the tracker are there for future reference but are not vital to the success of the project as it stands this semester. Navatar is a free and open-source software project, therefore it is important to make a note of any and all issues as they come up. We have specifically selected the most important issues to be included in our epic for the semester.
+Our group is using the ZenHub chrome extension in combination with Github\textsc{\char13}s issue tracker for project management. Using this tool, it has been very easy to assign work items to the members of group as well as manage collections of similar features and categorize desired and existing features. As of now, all of the major work items listed under the \textsc{\char13}Spring 2017 Desired Features\textsc{\char13} epic on the Github repository\textsc{\char13}s issue tracker can be feasibly achieved by the end of the semester on May 5th. All other features listed on the tracker are there for future reference but are not vital to the success of the project as it stands this semester. Navatar is a free and open-source software project, therefore it is important to make a note of any and all issues as they come up. We have specifically selected the most important issues to be included in our epic for the semester.
 
 \href{https://github.com/matthewjberger/navatar/}{Click here to view the Navatar repository on Github.}
 
@@ -220,7 +220,7 @@ Our group is using the ZenHub chrome extension in combination with Github's issu
 
 \section{The Zenhub Scrum Board}
 
-With the ZenHub chrome extension installed, the Github issue tracker gets an extended set of features more suited to scrum project management. One such feature is a scrum board that's directly linked to Github issues on your github repositories. In our case, the issues we've created for Navatar can be categorized and managed on the scrum board through the 'board' tab that's added along with ZenHub.
+With the ZenHub chrome extension installed, the Github issue tracker gets an extended set of features more suited to scrum project management. One such feature is a scrum board that\textsc{\char13}s directly linked to Github issues on your github repositories. In our case, the issues we\textsc{\char13}ve created for Navatar can be categorized and managed on the scrum board through the \textsc{\char13}board\textsc{\char13} tab that\textsc{\char13}s added along with ZenHub.
 
 \href{https://github.com/matthewjberger/navatar/issues\#boards?repos=80390803}{Click here to view the full scrum board on Github (if you have the ZenHub chrome extension installed).}
 
@@ -248,7 +248,7 @@ With the ZenHub chrome extension installed, the Github issue tracker gets an ext
 
 \subsection{Epic Issues}
 
-One feature that's added with the extension is Epic issue management. Epic issues are collections of issues to be prioritized and completed, and any issues created after an epic is made have the option to be assigned to an existing epic.
+One feature that\textsc{\char13}s added with the extension is Epic issue management. Epic issues are collections of issues to be prioritized and completed, and any issues created after an epic is made have the option to be assigned to an existing epic.
 
 \href{https://github.com/matthewjberger/navatar/issues}{Click here to view the full issue tracker on Github.}
 
@@ -263,7 +263,7 @@ One feature that's added with the extension is Epic issue management. Epic issue
 
 \subsection{Issue Categorization}
 
-Issues on Github can be labeled and assigned authors in order to make finding and identifying issues more accessible. With Github's issue tracker, all of the issues listed are searchable by tag, name, author, and date through Github's built-in search capabilities. Each issue contains a conversation about the issue, and can reference other issues, commits, repositories, etc as well be resolved or closed categorically by a collaborator on the repo. These changes are all automatically reflected on the scrum board via the ZenHub chrome extension.
+Issues on Github can be labeled and assigned authors in order to make finding and identifying issues more accessible. With Github\textsc{\char13}s issue tracker, all of the issues listed are searchable by tag, name, author, and date through Github\textsc{\char13}s built-in search capabilities. Each issue contains a conversation about the issue, and can reference other issues, commits, repositories, etc as well be resolved or closed categorically by a collaborator on the repo. These changes are all automatically reflected on the scrum board via the ZenHub chrome extension.
 
 \begin{figure}[ht!]
      \begin{center}
@@ -345,13 +345,13 @@ Ilias Apostolopoulos, Navid Fallah, Eelke Folmer, Kostas Bekris. Feasibility of 
 Ilias Apostolopoulos, Navid Fallah, Eelke Folmer, Kostas Bekris, Integrated Online Localization and Navigation for People with Visual Impairments using Smart Phones, IEEE International Conference on Robotics and Automation (ICRA), Pages 1322 -1329, Minnesota, MN, May, 2012.\\
 
 \textbf{Summary:}
-Discusses the results from initial user experiments with the Navatar prototype, providing detailed statistical data and analysis. In depth description of Navatar's path planning algorithm and accuracy. Shares some of the user's experiences and feedback. Suggesting accuracy improvements, saving and repeating directions, and making the application hands free.
+Discusses the results from initial user experiments with the Navatar prototype, providing detailed statistical data and analysis. In depth description of Navatar\textsc{\char13}s path planning algorithm and accuracy. Shares some of the user\textsc{\char13}s experiences and feedback. Suggesting accuracy improvements, saving and repeating directions, and making the application hands free.
 
-\section{Navatar's Localization Architecture}
+\section{Navatar\textsc{\char13}s Localization Architecture}
  Ilias Apostolopoulos, Navid Fallah, Eelke Folmer, Kostas Bekris. Integrated Online Localization and Navigation for People with Visual Impairments using Smart Phones, ACM Transactions on Interactive Intelligent Systems 3:4, Pages 1-25.\\
 
 \textbf{Summary:}
-More in depth descriptions of Navatar's localization architecture, giving the actual algorithms used for sampling, as well as the transition and observation models. Shows how the K-Means algorithm can be used to adapt Navatar's localization system to the unique stride lengths of a given user.
+More in depth descriptions of Navatar\textsc{\char13}s localization architecture, giving the actual algorithms used for sampling, as well as the transition and observation models. Shows how the K-Means algorithm can be used to adapt Navatar\textsc{\char13}s localization system to the unique stride lengths of a given user.
 
 \section{Indoor Navigation System for the Blind}
 Scientists design indoor navigation system for blind. (2016). Phys.org. Retrieved 8 November 2016, from http://phys.org/news/2012-05-scientists-indoor.html\\
@@ -378,7 +378,7 @@ A high level overview of indoor localization systems, describing how Navatar use
 	\section{Liam Gomez}
 		\begin{itemize}
 			\item Outlined the project deliverables
-			\item Organized user stories on the team's ZenBoard
+			\item Organized user stories on the team\textsc{\char13}s ZenBoard
 			\item Compiled the references.
 		\end{itemize}
 	\section{All Team Members}
