@@ -88,6 +88,8 @@ This component is responsible for logging and storing a user’s previously take
 	\item As a researcher, I should have access to the route history logs in a parsable format for analytical purposes.
 \end{enumerate}
 
+\pagebreak
+
 \section{Geofencing - Connor Parkinson}
 This component is responsible for the automatic selection of the campus and building based on the user’s current location. This component will use a combination of the smartphones GPS, cellular, and Wi-Fi to provide locational data. This locational data will then be compared with the known geographical boundaries of available campuses and buildings.
 
@@ -100,16 +102,18 @@ This component is responsible for the automatic selection of the campus and buil
 	\item As a user, I want Geofencing to select at least the campus even when accuracy is not high enough to select the building.
 \end{enumerate}
 
+\pagebreak
+
 \section{Gesture-Based Controls - Matthew Berger}
 This component is responsible for providing an additional input method to the user that is outside the existing Google Talkback integration. For a user with visual impairments navigating content heavy menus and input fields can be quite tedious. To improve this, a gesture based input system will be implemented and integrated with the existing user interface. Gesture based input will allow the user to make gestures on their devices screen that control the applications behavior.
 
-\subsection{User Stories} [TODO]
+\subsection{User Stories}
 \begin{enumerate}
-	\item As a user,.
-	\item As a user,.
-	\item As a user,.
-	\item As a user,.
-	\item As a user,.
+	\item As a user, I want to be able to control the application without having to speak in noisy environments.
+	\item As a user, I want gestures to be consistent, intuitive, and reliable.
+	\item As a user, I want to be able to long press to add a landmark.
+	\item As a user, I want gestures to be available for the entire screen, not a subsection.
+	\item As a user, I want to be able to swipe to confirm or reject application prompts.
 \end{enumerate}
 
 \chapter{Project Assignments and Schedule}
@@ -210,14 +214,28 @@ Following the updates to the requirements and design of the planned features, th
 
 	\item[] \textbf{Bugs with the Existing Codebase}
 	\item The team understands that issues can arise when working with existing code which is why the planned features have been designed to be as modular as possible to avoid conflicts with existing code. The team has also allotted time for debugging essential functionalities.
+	
+\pagebreak
+
 	\item[] \textbf{Development Environment Consistency}
 	\item Developing an application for Android involves a multitude of version specific dependencies which can be difficult to maintain and resolve conflicts between. The team is using Vagrant to configure a standard which is being used by all team members and will be suggested for all other open source contributors.
 
-	\item Risk Management Item
-	\item Risk Management Item
-	\item Risk Management Item
-	\item Risk Management Item
-	\item Risk Management Item
+	\item[] \textbf{Unit Test Coverage}
+	\item The application has a lot of existing code, and such code may or may not be guaranteed to work. To ameliorate this and provide a safe way forward, we intend to write tests for portions of the code that we touch in order to preserve the functionality in place and assure that new functionality is robust and well-integrated.
+	
+	\item[] \textbf{Scope Creep}
+	\item There are many modular features planned, but approaching too many at once can lead to a large increase in the amount of time per task and ultimately prevent the app from seeing completion by the end of the semester. To prevent this, we are planning out the project carefully and assigning specific, isolated, and modular features to members of the group and allowing an ample amount of time to complete and integrate them. This will help to prevent scope creep, and assure functionality is added to the software by the deadline.
+	
+	\item[] \textbf{Development Conflicts}
+	\item To properly manage the project on github and ensure each developer can work on the project properly and without breaking the codebase, we will follow the git branching model listed in this document and be deliberate in our usage of branches and commits. All commits will contain a full and accurate commit message. Additionally, continous integration will be used to run unit tests on each commit so at a glance it will be known whether or not a prior commit broke the build and we can address the issue with expedience.
+	
+	\item[] \textbf{Team Coordination}
+	\item Without proper communication, the team will not be able to coordinate their activities and develop properly. The simple solution we have come up with is to use sms, google hangouts, and shared google documents to properly interact without each other for our project necessities.
+	
+	\pagebreak
+	
+	\item[] \textbf{Team Motivation}
+	\item To prevent the team from becoming overwhelmed by deadlines and features, milestones will be set and will contain small goals that comprise the larger issues. This will assure constant progress and will keep the team motivated to continue working on the project. Additionally, to motivate others to work on the project we will make the repository and codebase more friendly by adding contribution guidelines and explaining how to build the source code with the development environment provided by our vagrant box. Having other people open pull requests and submit issues will help develop the project and boost team morale.
 \end{enumerate}
 
 \chapter{Team Contributions}
