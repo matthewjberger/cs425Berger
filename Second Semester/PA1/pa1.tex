@@ -71,8 +71,10 @@ Navatar is an indoor navigation system for visually impaired students. Unlike ex
 
 \chapter{Project Updates and Changes}
 Team 6 has been working on cleaning up the existing code base to better facilitate the implementation of the planned features while also debugging issues encountered with the existing code. The team has recently added additional priority to fixing bugs with the existing maps and map creation functionality as their advisor, Eelke Folmer, informed them a university has expressed interest in the development of Navatar. Efforts are also being made to automate setup of the development environment to allow other open source contributors to easily assist with improving Navatar.\\
+
 It became evident after the design and prototype stage that some of the team's ideas were better in theory than in implementation. One such example was using certain gestures as a form of interaction with the application. Gestures that are context-aware lead to the same application interactions eliciting separate and highly distinct behaviors that may lead to unexpected results for the user. The context of the application may be difficult to discern for a blind user. In this sense, gesture-detection functionality must be done carefully to ensure there are not conflicts between Navatar gestures and external accessibility gestures. Voice commands can also be used where gestures are found to not be feasible. We changed our design to also include the use of Google voice speech recognition as an input source should we deem it necessary. Simply speaking to the application through a microphone on a headset or set of ear-buds will allow for accurate control and potentially limitless interactions with the app which solves the issues associated with only using gestures.\\
-After designing, prototyping, and testing the GPS features we found that reliably detecting a user’s location indoors was difficult. It was determined that the real use-case for autolocation would be when a user enters a building, which allows for the best location accuracy using GPS. The subsequent use cases including the user leaving the building or navigating between rooms inside the building are made possible using an Android feature that allows for getting the last known location of the smartphone. The autolocation functionality is done using Geo-Fencing currently, and can be improved by using additional location data sources such as WiFi or cellular towers. As for navigation history, it is a nearly complete and functional feature barring the additional planned functionalities of allowing users to reverse the previously navigated route and collecting data on which routes are completable. Additional focus for improving the feature is allowing users to navigate the selections with easily spoken voice commands. Overall there is much to work on and many features to develop with the overarching task of refactoring the codebase to improve the quality of the existing code.
+
+After designing, prototyping, and testing the GPS features we found that reliably detecting a user’s location indoors was difficult. It was determined that the real use-case for autolocation would be when a user enters a building, which allows for the best location accuracy using GPS. The subsequent use cases including the user leaving the building or navigating between rooms inside the building are made possible using an Android feature that allows for getting the last known location of the smartphone.The autolocation functionality is done using Geo-Fencing currently, and can be improved by using additional location data sources such as WiFi or cellular towers. As for navigation history, it is a nearly complete and functional feature barring the additional planned functionalities of allowing users to reverse the previously navigated route and collecting data on which routes are completable. Additional focus for improving the feature is allowing users to navigate the selections with easily spoken voice commands. Overall there is much to work on and many features to develop with the overarching task of refactoring the codebase to improve the quality of the existing code.
 
 \chapter{Project Deliverables}
 This team’s primary focus is implementing new features that enhance the accuracy and usability of the existing application. Each team member will be responsible for the development and implementation of their respective component outlined below. Due to Navatar being an open source project some additional project deliverables are required. The current Navatar repository will be transferred to a more active maintainer that can help facilitate its open source development. After implemented the new features and improvements Team 6 will be responsible for releasing the updated version of Navatar to the Google Play Store.
@@ -81,7 +83,7 @@ This team’s primary focus is implementing new features that enhance the accura
 \section{Route History - Liam Gomez}
 This component is responsible for logging and storing a user’s previously taken routes. Storing the previous taken routes allows for a route repeat feature to be implemented, where a user has the option to view their route history and start a new navigation from that history. Storing route history also allows for a user to a reverse a given navigation after reaching their destination.
 
-\subsection{User Stories}
+\subsection{User Stories and Required Tasks}
 \begin{enumerate}
 	\item As a user, after opening Navatar, I should be given an option that takes me to the route history page so I can view my route history.
 	
@@ -96,7 +98,7 @@ This component is responsible for logging and storing a user’s previously take
 			\item Store route history to json file in local application storage upon completing a given route successfully.
 			\item Create a new activity responsible for starting navigation from a previously taken route.
 		\end{itemize}
-	
+\pagebreak
 	\item As a user, after successfully completing a navigation, I should be prompted if I would like to reverse that route so I can navigate back to my origin.
 	
 		\begin{itemize}
@@ -104,7 +106,7 @@ This component is responsible for logging and storing a user’s previously take
 			\item Create a new activity responsible for starting route reversal navigations.
 			\item Prompt / button should trigger the route reversal activity.
 		\end{itemize}
-\pagebreak
+
 	\item As a user, on the route history page, I would like to avoid having failed or incomplete navigations saved to my history so I can avoid repeating them.
 	
 		\begin{itemize}
@@ -125,7 +127,7 @@ This component is responsible for logging and storing a user’s previously take
 \section{Geofencing - Connor Parkinson}
 This component is responsible for the automatic selection of the campus and building based on the user’s current location. This component will use a combination of the smartphones GPS, cellular, and Wi-Fi to provide locational data. This locational data will then be compared with the known geographical boundaries of available campuses and buildings.
 
-\subsection{User Stories}
+\subsection{User Stories and Required Tasks}
 \begin{enumerate}
 	\item As a user, I want Geofencing so that I don't have to select the campus I am on.
 	
@@ -171,41 +173,40 @@ This component is responsible for the automatic selection of the campus and buil
 \section{Gesture-Based Controls - Matthew Berger}
 This component is responsible for providing an additional input method to the user that is outside the existing Google Talkback integration. For a user with visual impairments navigating content heavy menus and input fields can be quite tedious. To improve this, a gesture based input system will be implemented and integrated with the existing user interface. Gesture based input will allow the user to make gestures on their devices screen that control the applications behavior.
 
-\subsection{User Stories}
+\subsection{User Stories and Required Tasks}
 \begin{enumerate}
-	\item As a user, I want to be able to control the application without having to speak in noisy environments.
+	\item As a user, I want the option to be able to control the application without having to speak in noisy environments.
 	
 		\begin{itemize}
-			\item 
-			\item 
+			\item Have the app detect and respond to gestures such as swipes and long-presses.
+			\item Have the app use audio feedback and haptic feedback to respond to the user mechanically.
 		\end{itemize}
 		
 	\item As a user, I want gestures to be consistent, intuitive, and reliable.
 	
 		\begin{itemize}
-			\item 
-			\item 
+			\item Have the same gestures perform the same actions throughout the app.
+			\item Have similar gesture functionality as other applications, for intuition.
 		\end{itemize}
 		
 	\item As a user, I want to be able to long press to add a landmark.
 
 		\begin{itemize}
-			\item 
-			\item 
+			\item Investigate landmark component and integrate it.
+			\item Implement the observer pattern. Receieve from and broadcast events to other components for integration.
 		\end{itemize}
 	
 	\item As a user, I want gestures to be available for the entire screen, not a subsection.
 
 		\begin{itemize}
-			\item 
-			\item 
+			\item Force the app to use the whole screen for gesture detection.
 		\end{itemize}
 	
-	\item As a user, I want to be able to swipe to confirm or reject application prompts.
+	\item As a user, I want to be able to gesture to confirm or reject application prompts.
 	
 		\begin{itemize}
-			\item 
-			\item 
+			\item Implement a swipe right for accepting a prompt.
+			\item Implement a swipe left for rejecting a prompt.
 		\end{itemize}
 		
 \end{enumerate}
