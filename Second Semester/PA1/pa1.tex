@@ -126,10 +126,42 @@ This component is responsible for the automatic selection of the campus and buil
 \subsection{User Stories}
 \begin{enumerate}
 	\item As a user, I want Geofencing so that I don't have to select the campus I am on.
+	
+		\begin{itemize}
+			\item Investigate method for generating and storing campus boundaries that is accurate and easy for other open source contributors and map creators.
+			\item Implement automatic search for user location on campuses with defined geographic boundaries.
+			\item When the user is found to be on a campus, have the campus automatically be selected.
+		\end{itemize}
+		
 	\item As a user, I want Geofencing functionalities to be active when I open the app.
+	
+		\begin{itemize}
+			\item Have the app automatically begin polling location when it is opened.
+			\item Investigate best use of sensors and radios to find an accurate location within a reasonable amount of time.
+			\item Have the app use the last known location if it is recent and accurate enough.
+		\end{itemize}
+		
 	\item As a user, I want to revert to existing campus and or building selection if Geofencing fails (is not accurate enough or times out).
+	
+		\begin{itemize}
+			\item When Geofencing attempts fail (did not get accurate enough location before timeout) inform the user via voice or other method so they know to use existing campus and building selection functionality.
+		\end{itemize}
+		
 	\item As a user, I want Geofencing so that I don't have to select the building I want to navigate within.
+		\begin{itemize}
+		
+			\item Investigate method for generating and storing building boundaries that is accurate and easy for other open source contributors and map creators.
+			\item Implement automatic search for user location in or near a building with defined geographic boundaries.
+			\item When the user is found to be in or near a building, have the building automatically be selected.
+		\end{itemize}
+\pagebreak
 	\item As a user, I want Geofencing to select at least the campus even when accuracy is not high enough to select the building.
+	
+		\begin{itemize}
+			\item Investigate accuracy increase over time trend when polling the user location.
+			\item Have accuracy required for automatically selecting a campus be significantly lower than what is required for selecting a building.
+			\item When only the campus has been auto selected, continue to poll user location in attempt to get a more accurate reading for building selection.
+		\end{itemize}
 \end{enumerate}
 
 \pagebreak
@@ -140,10 +172,40 @@ This component is responsible for providing an additional input method to the us
 \subsection{User Stories}
 \begin{enumerate}
 	\item As a user, I want to be able to control the application without having to speak in noisy environments.
+	
+		\begin{itemize}
+			\item 
+			\item 
+		\end{itemize}
+		
 	\item As a user, I want gestures to be consistent, intuitive, and reliable.
+	
+		\begin{itemize}
+			\item 
+			\item 
+		\end{itemize}
+		
 	\item As a user, I want to be able to long press to add a landmark.
+
+		\begin{itemize}
+			\item 
+			\item 
+		\end{itemize}
+	
 	\item As a user, I want gestures to be available for the entire screen, not a subsection.
+
+		\begin{itemize}
+			\item 
+			\item 
+		\end{itemize}
+	
 	\item As a user, I want to be able to swipe to confirm or reject application prompts.
+	
+		\begin{itemize}
+			\item 
+			\item 
+		\end{itemize}
+		
 \end{enumerate}
 
 \chapter{Project Assignments and Schedule}
