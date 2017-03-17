@@ -47,7 +47,7 @@
 \begin{flushright}
     \rule{16cm}{5pt}\vskip1cm
     \begin{bfseries}
-        \Huge{PROJECT MANAGEMENT SPECIFICATIONS}\\
+        \Huge{TESTING STRATEGY AND PLAN}\\
         \vspace{1.6cm}
         for\\
         \vspace{1.6cm}
@@ -76,9 +76,7 @@ It became evident after the design and prototype stage that some of the team\tex
 
 After designing, prototyping, and testing the GPS features we found that reliably detecting a user\textsc{\char13}s location indoors was difficult. It was determined that the real use-case for autolocation would be when a user enters a building, which allows for the best location accuracy using GPS. The subsequent use cases including the user leaving the building or navigating between rooms inside the building are made possible using an Android feature that allows for getting the last known location of the smartphone.The autolocation functionality is done using Geo-Fencing currently, and can be improved by using additional location data sources such as WiFi or cellular towers. As for navigation history, it is a nearly complete and functional feature barring the additional planned functionalities of allowing users to reverse the previously navigated route and collecting data on which routes are completable. Additional focus for improving the feature is allowing users to navigate the selections with easily spoken voice commands. Overall there is much to work on and many features to develop with the overarching task of refactoring the codebase to improve the quality of the existing code.
 
-\chapter{Project Deliverables}
-This team\textsc{\char13}s primary focus is implementing new features that enhance the accuracy and usability of the existing application. Each team member will be responsible for the development and implementation of their respective component outlined below. Due to Navatar being an open source project some additional project deliverables are required. The current Navatar repository will be transferred to a more active maintainer that can help facilitate its open source development. After implementing the new features and improvements Team 6 will be responsible for releasing the updated version of Navatar to the Google Play Store.
-
+\chapter{Acceptance Criteria}
 
 \section{Route History - Liam Gomez}
 This component is responsible for logging and storing a user\textsc{\char13}s previously taken routes. Storing the previous taken routes allows for a route repeat feature to be implemented, where a user has the option to view their route history and start a new navigation from that history. Storing route history also allows for a user to a reverse a given navigation after reaching their destination.
@@ -211,153 +209,9 @@ This component is responsible for providing an additional input method to the us
 		
 \end{enumerate}
 
-\chapter{Project Assignments and Schedule}
-Our group is using the ZenHub chrome extension in combination with Github\textsc{\char13}s issue tracker for project management. Using this tool, it has been very easy to assign work items to the members of group as well as manage collections of similar features and categorize desired and existing features. As of now, all of the major work items listed under the \textsc{\char13}Spring 2017 Desired Features\textsc{\char13} epic on the Github repository\textsc{\char13}s issue tracker can be feasibly achieved by the end of the semester on May 5th. All other features listed on the tracker are there for future reference but are not vital to the success of the project as it stands this semester. Navatar is a free and open-source software project, therefore it is important to make a note of any and all issues as they come up. We have specifically selected the most important issues to be included in our epic for the semester.
+\chapter{Testing Workflow}
 
-\href{https://github.com/matthewjberger/navatar/}{Click here to view the Navatar repository on Github.}
-
-\pagebreak
-
-\section{The Zenhub Scrum Board}
-
-With the ZenHub chrome extension installed, the Github issue tracker gets an extended set of features more suited to scrum project management. One such feature is a scrum board that\textsc{\char13}s directly linked to Github issues on your github repositories. In our case, the issues we\textsc{\char13}ve created for Navatar can be categorized and managed on the scrum board through the \textsc{\char13}board\textsc{\char13} tab that\textsc{\char13}s added along with ZenHub.
-
-\href{https://github.com/matthewjberger/navatar/issues\#boards?repos=80390803}{Click here to view the full scrum board on Github (if you have the ZenHub chrome extension installed).}
-
-\begin{figure}[ht!]
-     \begin{center}
-%
-        \subfigure[The Full Scrum Board]{%
-            \label{fig:first}
-            \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{scrumboard.png}
-        }\\%
-        \subfigure[A Close-Up of the Scrum Board]{%
-            \label{fig:second}
-            \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{scrumboardcloseup.png}
-        }\\%
-    \end{center}
-    \caption{%
-        Scrum Board Screenshots
-     }%
-   \label{fig:subfigures}
-\end{figure}
-
-\pagebreak
-
-\section{Github Issue Tracking with the Zenhub Extension}
-
-\subsection{Epic Issues}
-
-One feature that\textsc{\char13}s added with the extension is Epic issue management. Epic issues are collections of issues to be prioritized and completed, and any issues created after an epic is made have the option to be assigned to an existing epic.
-
-\href{https://github.com/matthewjberger/navatar/issues}{Click here to view the full issue tracker on Github.}
-
-\begin{center}
-\begin{figure}[ht!]
-\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{epic.png}
-\caption{An epic issue.}
-\end{figure}
-\end{center}
-
-\pagebreak
-
-\subsection{Issue Categorization}
-
-Issues on Github can be labeled and assigned authors in order to make finding and identifying issues more accessible. With Github\textsc{\char13}s issue tracker, all of the issues listed are searchable by tag, name, author, and date through Github\textsc{\char13}s built-in search capabilities. Each issue contains a conversation about the issue, and can reference other issues, commits, repositories, etc as well be resolved or closed categorically by a collaborator on the repo. These changes are all automatically reflected on the scrum board via the ZenHub chrome extension.
-
-\begin{figure}[ht!]
-     \begin{center}
-%
-        \subfigure[Labeled issues on the board.]{%
-            \label{fig:first}
-            \includegraphics[width=\textwidth,height=0.3\textheight,keepaspectratio]{issues.png}
-        }\\%
-        \subfigure[A Navatar issue discussion on Github.]{%
-            \label{fig:second}
-            \includegraphics[width=\textwidth,height=0.3\textheight,keepaspectratio]{openissue.png}
-        }\\%
-    \end{center}
-    \caption{%
-        Scrum Board Screenshots
-     }%
-   \label{fig:subfigures}
-\end{figure}
-
-\pagebreak
-
-\section{Branching Model}
-
-A successful git branching model is vital for organized but quick development of a project. In our project, we plan to follow the github branching model detailed below.
-
-\href{http://nvie.com/posts/a-successful-git-branching-model/}{Click here to view the article discussing this branching model.}
-
-\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{branchingmodel.png}
-
-\chapter{Project Monitoring and Risk}
-
-Following the updates to the requirements and design of the planned features, the team developed a schedule and timeline to ensure project success. The team delegated subsystems, responsibilities, and workload by having each team member volunteer for pre-established subsections and responsibilities based on their experience and interests. Project tasks were outlined on the scrum board with corresponding time estimates and the team developed the schedule with both realistic and stretch goals for what is planned to be accomplished. Weekly meetings have been established which allows for all team members to hold each other accountable for their assigned tasks and for the team to reallocate time for tasks which could be deemed more complex than originally anticipated. A Gantt chart was considered for outlining each scheduled task and dependencies, but the team deemed it unnecessary due to the independent design of each planned feature.
-
-\section{Risk Management Strategies}
-\begin{enumerate}
-	\item[] \textbf{Sudden Increase in Requirements or Development time}
-	\item Mitigating the risk of sudden requirement or time increases has been mitigated by thoroughly establishing the requirements and design with a corresponding schedule that allows for flexible time allocation.
-	\item[] \textbf{Productivity Issues}
-	\item By having a realistic schedule and frequent team meetings, the team members are held accountable for the progress expected to be achieved at every step of the development process.
-
-	\item[] \textbf{Scheduling Issues}
-	\item Establishing frequent team meetings is possible by having all team members commit early in the development process to certain times and dates with sufficient time to prioritize and plan.
-
-	\item[] \textbf{Bugs with the Existing Codebase}
-	\item The team understands that issues can arise when working with existing code which is why the planned features have been designed to be as modular as possible to avoid conflicts with existing code. The team has also allotted time for debugging essential functionalities.
-	
-\pagebreak
-
-	\item[] \textbf{Development Environment Consistency}
-	\item Developing an application for Android involves a multitude of version specific dependencies which can be difficult to maintain and resolve conflicts between. The team is using Vagrant to configure a standard which is being used by all team members and will be suggested for all other open source contributors.
-
-	\item[] \textbf{Unit Test Coverage}
-	\item The application has a lot of existing code, and such code may or may not be guaranteed to work. To ameliorate this and provide a safe way forward, we intend to write tests for portions of the code that we touch in order to preserve the functionality in place and assure that new functionality is robust and well-integrated.
-	
-	\item[] \textbf{Scope Creep}
-	\item There are many modular features planned, but approaching too many at once can lead to a large increase in the amount of time per task and ultimately prevent the app from seeing completion by the end of the semester. To prevent this, we are planning out the project carefully and assigning specific, isolated, and modular features to members of the group and allowing an ample amount of time to complete and integrate them. This will help to prevent scope creep, and assure functionality is added to the software by the deadline.
-	
-	\item[] \textbf{Development Conflicts}
-	\item To properly manage the project on github and ensure each developer can work on the project properly and without breaking the codebase, we will follow the git branching model listed in this document and be deliberate in our usage of branches and commits. All commits will contain a full and accurate commit message. Additionally, continous integration will be used to run unit tests on each commit so at a glance it will be known whether or not a prior commit broke the build and we can address the issue with expedience.
-	
-	\item[] \textbf{Team Coordination}
-	\item Without proper communication, the team will not be able to coordinate their activities and develop properly. The simple solution we have come up with is to use sms, google hangouts, and shared google documents to properly interact without each other for our project necessities.
-	
-	\pagebreak
-	
-	\item[] \textbf{Team Motivation}
-	\item To prevent the team from becoming overwhelmed by deadlines and features, milestones will be set and will contain small goals that comprise the larger issues. This will assure constant progress and will keep the team motivated to continue working on the project. Additionally, to motivate others to work on the project we will make the repository and codebase more friendly by adding contribution guidelines and explaining how to build the source code with the development environment provided by our vagrant box. Having other people open pull requests and submit issues will help develop the project and boost team morale.
-\end{enumerate}
-
-\chapter{References}
-
-\section{Feasibility of Interactive Localization}
-Ilias Apostolopoulos, Navid Fallah, Eelke Folmer, Kostas Bekris. Feasibility of Interactive Localization and Navigation of People with Visual Impairments, Proceedings of 11th Intelligent Autonomous Systems Conference, Pages 22-32, Ottawa, Ontario, August 2010.\\
- 
- \textbf{Summary:}
- Investigates various solutions to the problem of indoor navigation for the visually impaired. Describes the issues that make indoor localization systems difficult to implement, and weighs the pros and cons of solutions that are currently available. Provides technical specifications for estimating a user\textsc{\char13}s location.
- 
-\section{Results from Initial User Experiments of Navatar}
-Ilias Apostolopoulos, Navid Fallah, Eelke Folmer, Kostas Bekris, Integrated Online Localization and Navigation for People with Visual Impairments using Smart Phones, IEEE International Conference on Robotics and Automation (ICRA), Pages 1322 -1329, Minnesota, MN, May, 2012.\\
-
-\textbf{Summary:}
-Discusses the results from initial user experiments with the Navatar prototype, providing detailed statistical data and analysis. In depth description of Navatar\textsc{\char13}s path planning algorithm and accuracy. Shares some of the user\textsc{\char13}s experiences and feedback. Suggesting accuracy improvements, saving and repeating directions, and making the application hands free.
-
-\section{Navatar\textsc{\char13}s Localization Architecture}
- Ilias Apostolopoulos, Navid Fallah, Eelke Folmer, Kostas Bekris. Integrated Online Localization and Navigation for People with Visual Impairments using Smart Phones, ACM Transactions on Interactive Intelligent Systems 3:4, Pages 1-25.\\
-
-\textbf{Summary:}
-More in depth descriptions of Navatar\textsc{\char13}s localization architecture, giving the actual algorithms used for sampling, as well as the transition and observation models. Shows how the K-Means algorithm can be used to adapt Navatar\textsc{\char13}s localization system to the unique stride lengths of a given user.
-
-\section{Indoor Navigation System for the Blind}
-Scientists design indoor navigation system for blind. (2016). Phys.org. Retrieved 8 November 2016, from http://phys.org/news/2012-05-scientists-indoor.html\\
-
-\textbf{Summary:}
-A high level overview of indoor localization systems, describing how Navatar uses a combination of GIS maps and readily available smartphone sensors to help visually impaired users navigate buildings. Contains some interview questions answered by Eelke Folmer about Navatar, and the potential benefits it could have.
+\chapter{Testing Strategy}
 
 \chapter{Team Contributions}
 	\section{Matthew Berger}
