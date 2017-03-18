@@ -93,24 +93,24 @@ This component is responsible for logging and storing a user’s previously take
 	\item As a user, after opening Navatar, I should be given an option that takes me to the route history page so I can view my route history.
 	
 		\begin{itemize}
-			\item AC1. - Route history option is displayed on homescreen if route history exists.
+			\item [AC1.] - Route history option is displayed on homescreen if route history exists.
 			
-			\item AC2. - Route history option is greyed out/unclickable or not present if route history does not exist.
+			\item [AC2.] - Route history option is greyed out/unclickable or not present if route history does not exist.
 
-			\item AC3. - Route history page displayed when option is selected.
+			\item [AC3.] - Route history page displayed when option is selected.
 
-			\item AC4. - A user can go back from the route history page to the main page.
+			\item [AC4.] - A user can go back from the route history page to the main page.
 
 		\end{itemize}
 	
 	\item As a user, on the route history page, I should be able to select a route from my history so I can repeat that navigation.
 	
 		\begin{itemize}
-			\item AC1. - Previously taken routes are loaded and displayed when a user enters the route history page.
-			\item AC2. - Previously taken routes are displayed with campus name, building name, and room numbers.
-			\item AC3. - Displayed routes are ordered from most to least recent.
+			\item [AC1.] - Previously taken routes are loaded and displayed when a user enters the route history page.
+			\item [AC2.] - Previously taken routes are displayed with campus name, building name, and room numbers.
+			\item [AC3.] - Displayed routes are ordered from most to least recent.
 AC4. User can select a route and immediately start navigation.
-			\item AC4. - User can select a route and immediately start navigation.
+			\item [AC4.] - User can select a route and immediately start navigation.
 		\end{itemize}
 \end{enumerate}
 
@@ -132,21 +132,21 @@ screen that control the applications behavior.
 to speak in noisy environments.
 	
 		\begin{itemize}
-			\item AC1. - A user can accept application prompts using a gesture.
+			\item[AC1.] - A user can accept application prompts using a gesture.
 
-			\item AC2. - A user can reject application prompts using a gesture.
+			\item[AC2.] - A user can reject application prompts using a gesture.
 
-			\item AC3. - Application can be signaled, by a gesture from a user, to repeat instructions.
+			\item[AC3.] - Application can be signaled, by a gesture from a user, to repeat instructions.
 		\end{itemize}
 	
 	\item As a user, I want to be able to long press to add a landmark.
 	
 		\begin{itemize}
-			\item AC1. - The long press gesture activates landmark addition functionality.
+			\item [AC1.] - The long press gesture activates landmark addition functionality.
 
-			\item AC2. - User can input name of landmark and confirm.
+			\item [AC2.] - User can input name of landmark and confirm.
 
-			\item AC3. - Landmark is saved for future navigation.
+			\item [AC3.] - Landmark is saved for future navigation.
 		\end{itemize}
 \end{enumerate}
 
@@ -163,23 +163,23 @@ This component is responsible for the automatic selection of the campus and buil
 	\item As a user, I want Geofencing so that I don't have to select the campus I am on.
 	
 		\begin{itemize}
-			\item AC1. User is prompted to provide location access permission during first geofencing attempt.
-			\item AC2. - GPS is activated and location is found, or last known location is polled if GPS is not available.
-			\item AC3. - Campus is automatically selected if location is on a supported campus.
-			\item AC4. - Building selection screen is shown if campus is auto-selected.
+			\item [AC1.] - User is prompted to provide location access permission during first geofencing attempt.
+			\item [AC2.] - GPS is activated and location is found, or last known location is polled if GPS is not available.
+			\item [AC3.] - Campus is automatically selected if location is on a supported campus.
+			\item [AC4.] - Building selection screen is shown if campus is auto-selected.
 
 		\end{itemize}
 	
 	\item As a user, I want to revert to existing campus and or building selection if Geofencing fails (is not accurate enough or times out).
 	
 		\begin{itemize}
-			\item AC1. - When GPS is inaccurate or unable to be retrieved, last known location is used.
+			\item [AC1.] - When GPS is inaccurate or unable to be retrieved, last known location is used.
 			
-			\item AC2. - When last known location is not available or outdated, user is notified that geofencing was unsuccessful.
+			\item [AC2.] - When last known location is not available or outdated, user is notified that geofencing was unsuccessful.
 			
-			\item AC3. - Manual campus selection page is displayed when geofencing fails.
+			\item [AC3.] - Manual campus selection page is displayed when geofencing fails.
 			
-			\item AC4. - Manual building selection page is displayed when location is only accurate enough for automatic campus selection.
+			\item [AC4.] - Manual building selection page is displayed when location is only accurate enough for automatic campus selection.
 		\end{itemize}
 \end{enumerate}
 
@@ -274,6 +274,36 @@ Due to the unreliability of GPS signals around campus and in buildings, it is im
 \end{enumerate}
 
 \chapter{Testing Strategy}
+
+For Navatar, there will be a variety of tests necessary for smooth development and assurance of completed features. The types of tests that will be conducted can be broken down into three components. The low level unit tests will be run against the codebase for each commit. As features are developed, they will be moved to a feature branch and then tested by members of the team until they are considered stable enough to merge back into the development branch.	Acceptance tests will account for the requested features for this project. These are high level end goals and will be carried out toward the end of the project's life cycle for the semester. These will be accompanied by user tests by blind students at UNR and will be adjusted according to this useful input that we could not have foreseen. The project will be considered successful and 'complete' when the acceptance tests are all passed, and a suite of unit tests has been built and can be used for regression and refactoring.
+
+\section{Test Types}
+\subsection{Acceptance Tests}
+	Each team member will be responsible for testing another member's feature. This ensures that no developer is testing features that they may have developed directly. This allows for a more realistic and thorough testing experience, preventing the happy path from being taken due to expectations of how the software is supposed to function based on the code written for it.\\\\The responsibilities for each team member are as follows:
+	\begin{enumerate}
+		\item Liam Gomez - Geofencing
+		\item Connor Parkinson - Gesture-Based Controls
+		\item Matthew Berger - Route Reversal and Navigation History
+	\end{enumerate}
+	
+\pagebreak
+
+\subsection{Unit Tests}
+
+There will be a suite of unit tests to test classes, objects, and methods in the codebase at a low-level. This suite will have as close to full coverage as possible ideally. Mocking may be utilized if necessary, and new tests will be written when developing features necessary to eventually make the acceptance tests pass. During the refactoring and code cleanup, this is vital because any regressions will be quickly detected in the form of failing unit tests. Any deviation from intended functionality in the codebase before refactoring is going to be highly visible and therefore easy to adjust to while working on the project. In addition to this, objects will work as expected and methods will function properly if they are passing the unit tests, and can be safely reused and freely adjusted under the condition that they continue to pass their corresponding unit test.
+
+\subsection{User Tests}
+
+In addition to acceptance tests, Team 6 will attempt to find and ask for the help of blind students at UNR to exercise Navatar in its prototypical state. The goal of this project was to mold Navatar into a more consumable form and to begin work on features that can be extended by future developers in the open source community. Having a solid foundation is important. The blind students will be asked to follow the workflows listed in section 4 of this document, and success or failure of these workflows will indicate the solidarity of the foundation of Navatar.
+
+\section{Reporting Bugs}
+
+Any defects found will be reported and distributed amongst the team via the issue tracker on the upstream github repository fork of Navatar, as well as assigned to a category on the Zenhub board on the same repo.\\\\The protocol is as follows:
+\begin{itemize}
+	\item A team member must be assigned.
+	\item List reproduction steps.
+	\item The issue must be added to any relevant Zenhub epicsset of tests.
+\end{itemize}
 
 \chapter{Team Contributions}
 	\section{Matthew Berger}
