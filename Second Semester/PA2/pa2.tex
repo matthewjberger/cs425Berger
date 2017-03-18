@@ -279,7 +279,7 @@ For Navatar, there will be a variety of tests necessary for smooth development a
 
 \section{Test Types}
 \subsection{Acceptance Tests}
-	Each team member will be responsible for testing another member's feature. This ensures that no developer is testing features that they may have developed directly. This allows for a more realistic and thorough testing experience, preventing the happy path from being taken due to expectations of how the software is supposed to function based on the code written for it.\\\\The responsibilities for each team member are as follows:
+	Each team member will be responsible for testing another member's feature. This ensures that no developer is testing features that they may have developed directly. This allows for a more realistic and thorough testing experience, preventing the happy path from being taken due to expectations of how the software is supposed to function based on the code written for it.\\\\Each member will test a feature they did not develop. Specifically, the testing responsibilities for each team member are as follows:
 	\begin{enumerate}
 		\item Liam Gomez - Geofencing
 		\item Connor Parkinson - Gesture-Based Controls
@@ -304,6 +304,22 @@ Any defects found will be reported and distributed amongst the team via the issu
 	\item List reproduction steps.
 	\item The issue must be added to any relevant Zenhub epicsset of tests.
 \end{itemize}
+
+\pagebreak
+
+\begin{table}[h]
+
+\section{Test Plan for Acceptance Criteria}
+\centering
+\begin{tabular}{|p{0.04\linewidth}|p{0.14\linewidth}|p{0.2\linewidth}|p{0.2\linewidth}|p{0.2\linewidth}|p{0.2\linewidth}|}
+\hline
+\rowcolor[HTML]{329A9D} 
+Test No.                    & Test Name                  & Purpose of Test                                                                                                                           & Situation                                                                                                                                                                                                      & Expected Result                                                                                                                                                                                                     & Outcome and Actions Required                                                                                                                                                                                                    \\ \hline
+\cellcolor[HTML]{9B9B9B}1.) & Geofencing                 & To determine if the software can correctly figure out the building a user is in on campus under ideal circumstances                       & The user is outside a building on campus and walks inside with the Navatar application open.                                                                                                                   & The application will attempt to and hopefully be able to determine which building the user is in on campus, and will pull up the stored map for that building as well as the landmarks, paths, and previous routes. & If the application does not succeed in determining the building when it is expected to, then the geofencing code may need to be reworked and development time will be extended in an agile manner. Then this must be re-tested. \\ \hline
+\cellcolor[HTML]{9B9B9B}2.) & Gesture Detection          & To determine if a user can navigate the application using only gestures                                                                   & The user has the Navatar application open and swipes to the right on the screen.                                                                                                                               & The next screen appears and the application announces the name of the screen audibly.                                                                                                                               & If the application fails to navigate through gesture-based controls then the user cannot use the application and the gesture component must be addressed and corrected. Then this must be re-tested.                            \\ \hline
+\cellcolor[HTML]{9B9B9B}3.) & Route History and Reversal & To determine if a user can reuse past attempted navigation routes, and if they can reverse a previous route to go back where they started & The user has navigated somewhere prior and swipes down on the screen to bring up the navigation history. The user then clicks on a previous route. The user is presented with an option to reverse that route. & The application allows the route to be followed in reverse or like normal.                                                                                                                                          & If the application fails to allow a previous route either normally or in reverse, then the feature must be revisited and corrected, then re-tested.                                                                             \\ \hline
+\end{tabular}
+\end{table}
 
 \chapter{Team Contributions}
 	\section{Matthew Berger}
