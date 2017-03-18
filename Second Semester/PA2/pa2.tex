@@ -66,150 +66,212 @@
 \tableofcontents
 
 \chapter{Abstract}
-Navatar is an indoor navigation system for visually impaired students. Unlike existing systems that rely on expensive equipment, Navatar only requires an Android smartphone. The phone\textsc{\char13}s GPS, accelerometer, and compass are used to approximate a user\textsc{\char13}s location and movements and the phone\textsc{\char13}s speaker is used to provide auditory directions to rooms within a building. Buildings on University campuses often have the GIS maps and the design required for Navatar\textsc{\char13}s accelerometer and compass based localization, which is why students are the intended audience for the project. With the application\textsc{\char13}s open source status and modular design, crowdsourcing efforts can be used to integrate maps for buildings on any campus. The application is still under development and Team 6 is working on project management and scheduling for the implementation of a variety of new features alongside other open source contributors.
-
+Navatar is an indoor navigation system for visually impaired students. Unlike existing systems that rely on expensive equipment, Navatar only requires an Android smartphone. The phone’s GPS, accelerometer, and compass are used to approximate a user’s location and movements and the phone’s speaker is used to provide auditory directions to rooms within a building. Buildings on University campuses often have the GIS maps and the design required for Navatar’s accelerometer and compass based localization, which is why students are the intended audience for the project. With the application’s open source status and modular design, crowdsourcing efforts can be used to integrate maps for buildings on any campus. The application is still under development and Team 6 is working on establishing acceptance criteria and testing strategies for the implementation of a variety of new features.
 
 \chapter{Project Updates and Changes}
-Team 6 has been working on cleaning up the existing code base to better facilitate the implementation of the planned features while also debugging issues encountered with the existing code. The team has recently added additional priority to fixing bugs with the existing maps and map creation functionality as their advisor, Eelke Folmer, informed them a university has expressed interest in the development of Navatar. Efforts are also being made to automate setup of the development environment to allow other open source contributors to easily assist with improving Navatar.\\
+Team 6 has been working on implementing the planned features in accordance with the project schedule. The team has also made progress with cleaning up the code base and debugging issues encountered with the existing features. There has been a strong focus on making the repo easy to work with and to understand. This involves both setting up an easy way to work with the existing code, and refactoring the existing code carefully in order to improve the readability and viability of the codebase. This is being done through adding regression tests to cover as much of the codebase as possible, and then carefully refactoring and re-running regression tests to check for breakages.\\
 
-It became evident after the design and prototype stage that some of the team\textsc{\char13}s ideas were better in theory than in implementation. One such example was using certain gestures as a form of interaction with the application. Gestures that are context-aware lead to the same application interactions eliciting separate and highly distinct behaviors that may lead to unexpected results for the user. The context of the application may be difficult to discern for a blind user. In this sense, gesture-detection functionality must be done carefully to ensure there are not conflicts between Navatar gestures and external accessibility gestures. Voice commands can also be used where gestures are found to not be feasible. We changed our design to also include the use of Google voice speech recognition as an input source should we deem it necessary. Simply speaking to the application through a microphone on a headset or set of ear-buds will allow for accurate control and potentially limitless interactions with the app which solves the issues associated with only using gestures.\\
+In an effort to make the open source project repository on github more approachable, the team has developed an easy way to create a development environment for Navatar using Vagrant and Docker. On windows, a developer who is interested in developing Navatar can simply clone the repo and type ‘vagrant up’ in the terminal (with vagrant and virtualbox installed). This will spin up a virtual machine that will then automatically install docker on itself, and then pull in the docker images used for Navatar. In our case, the docker image used for Navatar is one containing the Android-SDK and uses docker-compose to setup the necessary forwarding for the X server on the virtual machine, allowing the android SDK to be seen visually and interacted with.\\
 
-After designing, prototyping, and testing the GPS features we found that reliably detecting a user\textsc{\char13}s location indoors was difficult. It was determined that the real use-case for autolocation would be when a user enters a building, which allows for the best location accuracy using GPS. The subsequent use cases including the user leaving the building or navigating between rooms inside the building are made possible using an Android feature that allows for getting the last known location of the smartphone.The autolocation functionality is done using Geo-Fencing currently, and can be improved by using additional location data sources such as WiFi or cellular towers. As for navigation history, it is a nearly complete and functional feature barring the additional planned functionalities of allowing users to reverse the previously navigated route and collecting data on which routes are completable. Additional focus for improving the feature is allowing users to navigate the selections with easily spoken voice commands. Overall there is much to work on and many features to develop with the overarching task of refactoring the codebase to improve the quality of the existing code.
+    The Geo-Fencing functionality has been implemented to poll the GPS for the device location, and if accuracy of the readings is too low, the application attempts to use the last known location of the device. When an accurate GPS reading or recent last location is found, the location is compared with the coordinates of supported campuses and buildings. The appropriate building and campus are auto-selected if the user is determined to be within the geo-fences. Efforts are now being made to establish an elegant solution for inputting and storing coordinates for future supported campuses and buildings.\\
+    
+The route history feature has been implemented to store route history to a JSON encoded file in local device storage. Along with storing the route history, the route reversal feature is now implemented, giving the user the option to reverse their navigation on route completion. While both of these features are functioning as intended there are several bugs and edge cases that need to be handled before these features are ready for production. It became apparent that some code refactoring is necessary after implementing these features, especially with the code pertaining to route selection. Efforts are currently being made on refactoring this error-prone code.\\
 
-\chapter{Acceptance Criteria}
+\pagebreak
+
+The gesture detection feature has been implemented in order to provide a way to control the application and to interact without having to speak out loud in a noisy environment. The gesture controls are system-wide and can be hooked up to any component. The screens will state what they are in the application, and the entire screen will be available for performing gestures, allowing for consistent actions across the entire application. There will be a gesture for announcing out loud what actions can be taken through specific gestures upon request. This should allow for the best user experience possible.
+
+\chapter{Acceptance Criteria for Components \& New Features}
 
 \section{Route History - Liam Gomez}
-This component is responsible for logging and storing a user\textsc{\char13}s previously taken routes. Storing the previous taken routes allows for a route repeat feature to be implemented, where a user has the option to view their route history and start a new navigation from that history. Storing route history also allows for a user to a reverse a given navigation after reaching their destination.
 
-\subsection{User Stories and Required Tasks}
+This component is responsible for logging and storing a user’s previously taken routes. Storing the previous taken routes allows for a route repeat feature to be implemented, where a user has the option to view their route history and start a new navigation from that history. Storing route history also allows for a user to a reverse a given navigation after reaching their destination.
+
+
+\subsection{User Stories and Acceptance Tests}
 \begin{enumerate}
 	\item As a user, after opening Navatar, I should be given an option that takes me to the route history page so I can view my route history.
 	
 		\begin{itemize}
-			\item Create a button on homescreen of application that takes user to route history page. Only display button if there is route history to display.
-			\item Create route history page that pulls history from the route history json file.
+			\item AC1. - Route history option is displayed on homescreen if route history exists.
+			
+			\item AC2. - Route history option is greyed out/unclickable or not present if route history does not exist.
+
+			\item AC3. - Route history page displayed when option is selected.
+
+			\item AC4. - A user can go back from the route history page to the main page.
+
 		\end{itemize}
 	
 	\item As a user, on the route history page, I should be able to select a route from my history so I can repeat that navigation.
 	
 		\begin{itemize}
-			\item Store route history to json file in local application storage upon completing a given route successfully.
-			\item Create a new activity responsible for starting navigation from a previously taken route.
-		\end{itemize}
-\pagebreak
-	\item As a user, after successfully completing a navigation, I should be prompted if I would like to reverse that route so I can navigate back to my origin.
-	
-		\begin{itemize}
-			\item Create prompt / button that is displayed on successfully completing a route asking if user would like to reverse.
-			\item Create a new activity responsible for starting route reversal navigations.
-			\item Prompt / button should trigger the route reversal activity.
-		\end{itemize}
-
-	\item As a user, on the route history page, I would like to avoid having failed or incomplete navigations saved to my history so I can avoid repeating them.
-	
-		\begin{itemize}
-			\item Ensure route history is not saved to failed to incomplete navigations in NavigationActivity.java
-		\end{itemize}
-	
-	\item As a researcher, I should have access to the route history logs in a parsable format for analytical purposes.
-	
-		\begin{itemize}
-			\item Investigate the feasibility of pushing route history logs to a cloud based storage solution.
-			\item Ensure route history logs are stored in an easily locatable directory of the local device storage.
-		\end{itemize}
-	
-\end{enumerate}
-
-\pagebreak
-
-\section{Geofencing - Connor Parkinson}
-This component is responsible for the automatic selection of the campus and building based on the user\textsc{\char13}s current location. This component will use a combination of the smartphones GPS, cellular, and Wi-Fi to provide locational data. This locational data will then be compared with the known geographical boundaries of available campuses and buildings.
-
-\subsection{User Stories and Required Tasks}
-\begin{enumerate}
-	\item As a user, I want Geofencing so that I don\textsc{\char13}t have to select the campus I am on.
-	
-		\begin{itemize}
-			\item Investigate method for generating and storing campus boundaries that is accurate and easy for other open source contributors and map creators.
-			\item Implement automatic search for user location on campuses with defined geographic boundaries.
-			\item When the user is found to be on a campus, have the campus automatically be selected.
-		\end{itemize}
-		
-	\item As a user, I want Geofencing functionalities to be active when I open the app.
-	
-		\begin{itemize}
-			\item Have the app automatically begin polling location when it is opened.
-			\item Investigate best use of sensors and radios to find an accurate location within a reasonable amount of time.
-			\item Have the app use the last known location if it is recent and accurate enough.
-		\end{itemize}
-		
-	\item As a user, I want to revert to existing campus and or building selection if Geofencing fails (is not accurate enough or times out).
-	
-		\begin{itemize}
-			\item When Geofencing attempts fail (did not get accurate enough location before timeout) inform the user via voice or other method so they know to use existing campus and building selection functionality.
-		\end{itemize}
-		
-	\item As a user, I want Geofencing so that I don\textsc{\char13}t have to select the building I want to navigate within.
-		\begin{itemize}
-		
-			\item Investigate method for generating and storing building boundaries that is accurate and easy for other open source contributors and map creators.
-			\item Implement automatic search for user location in or near a building with defined geographic boundaries.
-			\item When the user is found to be in or near a building, have the building automatically be selected.
-		\end{itemize}
-\pagebreak
-	\item As a user, I want Geofencing to select at least the campus even when accuracy is not high enough to select the building.
-	
-		\begin{itemize}
-			\item Investigate accuracy increase over time trend when polling the user location.
-			\item Have accuracy required for automatically selecting a campus be significantly lower than what is required for selecting a building.
-			\item When only the campus has been auto selected, continue to poll user location in attempt to get a more accurate reading for building selection.
+			\item AC1. - Previously taken routes are loaded and displayed when a user enters the route history page.
+			\item AC2. - Previously taken routes are displayed with campus name, building name, and room numbers.
+			\item AC3. - Displayed routes are ordered from most to least recent.
+AC4. User can select a route and immediately start navigation.
+			\item AC4. - User can select a route and immediately start navigation.
 		\end{itemize}
 \end{enumerate}
 
 \pagebreak
 
 \section{Gesture-Based Controls - Matthew Berger}
-This component is responsible for providing an additional input method to the user that is outside the existing Google Talkback integration. For a user with visual impairments navigating content heavy menus and input fields can be quite tedious. To improve this, a gesture based input system will be implemented and integrated with the existing user interface. Gesture based input will allow the user to make gestures on their devices screen that control the applications behavior.
 
-\subsection{User Stories and Required Tasks}
+This component is responsible for providing an additional input method to the user that
+is outside the existing Google Talkback integration. For a user with visual impairments
+navigating content heavy menus and input fields can be quite tedious. To improve this,
+a gesture based input system will be implemented and integrated with the existing user
+interface. Gesture based input will allow the user to make gestures on their devices
+screen that control the applications behavior.
+
+\subsection{User Stories and Acceptance Tests}
+
 \begin{enumerate}
-	\item As a user, I want the option to be able to control the application without having to speak in noisy environments.
+	\item As a user, I want the option to be able to control the application without having
+to speak in noisy environments.
 	
 		\begin{itemize}
-			\item Have the app detect and respond to gestures such as swipes and long-presses.
-			\item Have the app use audio feedback and haptic feedback to respond to the user mechanically.
+			\item AC1. - A user can accept application prompts using a gesture.
+
+			\item AC2. - A user can reject application prompts using a gesture.
+
+			\item AC3. - Application can be signaled, by a gesture from a user, to repeat instructions.
 		\end{itemize}
-		
-	\item As a user, I want gestures to be consistent, intuitive, and reliable.
 	
-		\begin{itemize}
-			\item Have the same gestures perform the same actions throughout the app.
-			\item Have similar gesture functionality as other applications, for intuition.
-		\end{itemize}
-		
 	\item As a user, I want to be able to long press to add a landmark.
+	
+		\begin{itemize}
+			\item AC1. - The long press gesture activates landmark addition functionality.
 
-		\begin{itemize}
-			\item Investigate landmark component and integrate it.
-			\item Implement the observer pattern. Receieve from and broadcast events to other components for integration.
-		\end{itemize}
-	
-	\item As a user, I want gestures to be available for the entire screen, not a subsection.
+			\item AC2. - User can input name of landmark and confirm.
 
-		\begin{itemize}
-			\item Force the app to use the whole screen for gesture detection.
+			\item AC3. - Landmark is saved for future navigation.
 		\end{itemize}
-	
-	\item As a user, I want to be able to gesture to confirm or reject application prompts.
-	
-		\begin{itemize}
-			\item Implement a swipe right for accepting a prompt.
-			\item Implement a swipe left for rejecting a prompt.
-		\end{itemize}
-		
 \end{enumerate}
 
+\pagebreak
+
+\section{Geofencing - Connor Parkinson}
+
+This component is responsible for the automatic selection of the campus and building based on the user’s current location. This component will use a combination of the smartphones GPS, cellular, and Wi-Fi to provide locational data. This locational data will then be compared with the known geographical boundaries of available campuses and buildings.
+
+
+\subsection{User Stories and Acceptance Tests}
+
+\begin{enumerate}
+	\item As a user, I want Geofencing so that I don't have to select the campus I am on.
+	
+		\begin{itemize}
+			\item AC1. User is prompted to provide location access permission during first geofencing attempt.
+			\item AC2. - GPS is activated and location is found, or last known location is polled if GPS is not available.
+			\item AC3. - Campus is automatically selected if location is on a supported campus.
+			\item AC4. - Building selection screen is shown if campus is auto-selected.
+
+		\end{itemize}
+	
+	\item As a user, I want to revert to existing campus and or building selection if Geofencing fails (is not accurate enough or times out).
+	
+		\begin{itemize}
+			\item AC1. - When GPS is inaccurate or unable to be retrieved, last known location is used.
+			
+			\item AC2. - When last known location is not available or outdated, user is notified that geofencing was unsuccessful.
+			
+			\item AC3. - Manual campus selection page is displayed when geofencing fails.
+			
+			\item AC4. - Manual building selection page is displayed when location is only accurate enough for automatic campus selection.
+		\end{itemize}
+\end{enumerate}
+
+\pagebreak
+
 \chapter{Testing Workflow}
+
+\section{Happy Path Workflows}
+
+\subsection{Route Reversal Workflow}
+
+Ideally this workflow should be validated when both route history and route reversal are fully implemented. This workflow will be validated inside the Scrugham Engineering and Mines building on campus as it is the building with the most amount of testing.
+
+\begin{enumerate}
+	\item Open Navatar and choose any reasonable origin and destination rooms.
+	
+	\item Begin navigation and complete route successfully.
+	
+	\item Verify upon route completion that a reverse route option is given.
+	
+	\item Click the reverse route button and begin navigating the reversed route.
+	
+	\item Complete reverse route navigation successfully and verify its accuracy.
+
+\end{enumerate}
+
+\subsection{Geofencing Workflow}
+
+his workflow has already been validated for automatically selecting the UNR campus, but automated building selection has yet to be verified. This will be validated once the GIS maps and geographical coordinates for the various building on UNR’s campus have been input into Navatar.
+
+\begin{enumerate}
+	\item Open Navatar on UNR’s campus, ensuring the phones GPS is active and Navatar has the proper permissions within the android operating system.
+	
+	\item Verify the app automatically selects University of Nevada Reno as the active campus.
+	
+	\item With Navatar open walk into the Scrugham Engineering and Mines building.
+	
+	\item Verify Navatar automatically selects SEM as the current active building
+
+\end{enumerate}
+
+\pagebreak
+
+\subsection{Gesture Based Input Workflow}
+
+This workflow focuses on verifying the user has the ability to use gesture based inputs to interact with Navatar. More specifically having the user long press the screen to add a landmark. This workflow will be validated once landmark based navigation and custom landmarks have been improved and implemented.
+
+\begin{enumerate}
+	\item Open Navatar in SEM and begin a new navigation within the building.
+	
+	\item During the navigation stop at any landmark.
+	
+	\item Press and hold the screen for a few seconds and verify an option is given to add a new landmark.
+	
+	\item Add and save a new landmark at current position.
+Repeat the route just taken and verify landmarks presence during navigation.
+
+\end{enumerate}
+
+\pagebreak
+
+\section{Negative Testing Workflows}
+
+\subsection{Negative Route History Workflow}
+
+There are various edge cases in route history that must be validated, while some of the error handling is already implemented, many are not. This negative testing workflow will be validated upon implementing the remaining error handling cases.
+
+\begin{enumerate}
+	\item User has no route history because they have yet to successfully complete a navigation. Is the route history option still displayed to the user upon opening Navatar? The option should not be displayed.
+	
+	\item A user cancels or fails to complete a given route, does this given route appear in route history afterwards even though it was not successful?
+	
+	\item An impossible route is selected, for instance origin and destination rooms are the same. The application should notify the user of the impossibility and fail to save the impossible route to route history.
+	
+	\item Upon completing a route the route reversal feature is activated, is the reversed route the exact inverse of the initial navigation? Or has the Navatar selected a different path for the reversed route. The reversed navigation should follow the same path as before to avoid confusing the user assuming the reversed route is possible within the confines of the building.
+
+\end{enumerate}
+
+\subsection{Negative Geofencing Workflow}
+
+Due to the unreliability of GPS signals around campus and in buildings, it is important that Navatar reverts to manual selection of routes if the application is unable to acquire an accurate location. This will be validated once more accurate coordinates of UNR’s buildings have been imported into Navatar.
+
+\begin{enumerate}
+	\item No GPS based or recent location can be determined. Does the application revert to manual selections for the required inputs needed to begin a navigation?
+	
+	\item The phone provides a valid location that is outside of any boundaries known to Navatar. Does the application notify the user that they are not within an area currently supported by Navatar?
+	
+	\item No accurate user location can be determined, does Navatar continue polling the GPS system? To avoid draining the phone’s battery Navatar should stop sending requests for GPS locations after a number of failures.
+	
+	\item A location is given that is equidistant from two building supported by Navatar. Does the application revert to manual selections for the building? The application should revert to using manual inputs in this case to avoid placing the user in the wrong building.
+
+\end{enumerate}
 
 \chapter{Testing Strategy}
 
@@ -217,23 +279,20 @@ This component is responsible for providing an additional input method to the us
 	\section{Matthew Berger}
 		\begin{itemize}
 			\item Created LaTeX document
-			\item Setup source and development environment controls
-			\item Completed project assignments and schedule
-			\item Created gesture subsystem user stories
-			\item Completed five of the ten risk management strategies
+			\item Summarized the project updates for gestures as well as Vagrant and Docker setup
+			\item Outlined the testing strategies
 		\end{itemize}
 	\section{Connor Parkinson}
 		\begin{itemize}
 			\item Completed the abstract
-			\item Outlined the project design and requirement updates
-			\item Established the project monitoring plan
-			\item Completed five of the ten risk management strategies
+			\item Summarized the project updates for geo-fencing
+			\item Outlined acceptance criteria for use cases
 		\end{itemize}
 	\section{Liam Gomez}
 		\begin{itemize}
-			\item Outlined the project deliverables
-			\item Organized user stories on the team\textsc{\char13}s ZenBoard
-			\item Compiled the references.
+			\item Summarized the project updates for route history
+			\item Completed happy path testing workflows
+			\item Completed negative testing workflows
 		\end{itemize}
 	\section{All Team Members}
 		\begin{itemize}
