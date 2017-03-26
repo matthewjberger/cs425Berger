@@ -1,4 +1,4 @@
-# Documents for Navatar Improvements
+# Documents for the Navatar Improvements Project
 
 This repository contains the documents created by Team 6: Navatar for the CS425 and CS426 Senior Projects course at UNR.
 
